@@ -2,14 +2,14 @@
   // ===== Navigation Functionality =====
   function initNavigation() {
     // Update active navigation link based on current page
-    const currentPage = window.location.pathname.split('/').pop() || 'index1.html';
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-link');
     
     navLinks.forEach(link => {
       const href = link.getAttribute('href');
       const isActive = href === currentPage || 
-                      (currentPage === '' && href === 'index1.html') ||
-                      (currentPage === 'index.html' && href === 'index1.html');
+                      (currentPage === '' && href === 'index.html') ||
+                      (currentPage === 'index.html' && href === 'index.html');
       
       if (isActive) {
         link.classList.add('active');
@@ -678,7 +678,7 @@
           if (label === 'menu') {
             a.setAttribute('href', 'menu.html');
           } else {
-            a.setAttribute('href', href.replace('index.html','index1.html'));
+            a.setAttribute('href', href.replace('index1.html','index.html'));
           }
         }
 
@@ -689,11 +689,11 @@
 
         // Ensure any explicit Home link points to our actual landing page
         if ((label === 'home' || label === 'homepage') && (href === 'index.html' || href === './' || href === '/')){
-          a.setAttribute('href', 'index1.html');
+          a.setAttribute('href', 'index.html');
         }
 
         // If a link text says Menu but points to Home, make it open the drawer via menu.html
-        if (label === 'menu' && (href === 'index1.html' || href === 'index.html' || href === './')){
+        if (label === 'menu' && (href === 'index.html' || href === './')){
           a.setAttribute('href', 'menu.html');
         }
       });
