@@ -5,76 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Our Cakes - Delicious handcrafted cakes from The Rustic Whisk" />
   <title>Our Cakes - The Rustic Whisk</title>
+  <link rel="stylesheet" href="styles.css">
   <style>
     /* ===== Reset ===== */
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
-
     body {
       font-family: 'Arial', sans-serif;
       background: linear-gradient(white,  rgb(221, 188, 188), white);
       color: #333;
     }
-
     a {
       text-decoration: none;
       color: inherit;
     }
-
-    /* ===== Navbar ===== */
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 50px;
-      background: #f7efe0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .brand {
-      font-size: 1.5rem;
+    /* Navbar styles inherit from main styles.css */
+    .btn-signin {
+      padding: 5px 12px;
+      background: #d78e55;
+      color: #fff;
+      border-radius: 5px;
       font-weight: bold;
-      display: flex;
-      align-items: center;
     }
-
-    .emoji-logo {
-      margin-right: 8px;
-    }
-
     .nav {
       display: flex;
       align-items: center;
     }
 
-    .nav .link {
-      margin: 0 15px;
-      padding: 5px 0;
-      font-weight: 500;
-    }
-
-    .nav .link.active {
-      border-bottom: 3px solid #5b4032;
-    }
-
     /* ===== Banner Image ===== */
     .banner-image {
       width: 100%;
-      height: 650px;
+      height: 600px; /* bigger box */
+      max-height: 600px; /* optional, prevents it from being too tall */
       overflow: hidden;
       margin-bottom: 30px;
     }
-
     .banner-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; /* fills the container nicely */
       display: block;
     }
 
@@ -107,7 +79,7 @@
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
     }
 
@@ -119,16 +91,10 @@
       text-align: center;
       transition: transform 0.3s ease;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 350px; /* adjust as per image + info */
     }
-
     .product-card:hover {
       transform: translateY(-5px);
     }
-
     .product-price {
       position: absolute;
       top: 15px;
@@ -140,14 +106,12 @@
       font-weight: bold;
       z-index: 2;
     }
-
     .product-image {
       position: relative;
       width: 100%;
-      height: 300px; /* Adjust image height here */
+      height: 220px;
       overflow: hidden;
     }
-
     .product-image img {
       width: 100%;
       height: 100%;
@@ -155,16 +119,25 @@
       display: block;
       transition: opacity 0.4s ease;
     }
-
-    .product-info {
-      padding: 20px 25px;
+    .product-image .img-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
     }
-
+    .product-card:hover .img-hover {
+      opacity: 1;
+    }
+    .product-card:hover .img-default {
+      opacity: 0;
+    }
+    .product-info {
+      padding: 15px;
+    }
     .product-info h3 {
-      color: #5b4032;
+      color: #d78e55;
       margin-bottom: 8px;
     }
-
     .product-info p {
       font-size: 0.95rem;
       color: #555;
@@ -276,24 +249,26 @@
       font-size: 1.2rem;
     }
 
-    /* ===== Responsive ===== */
-    @media(max-width: 1024px) {
+    /* Responsive */
+    @media(max-width: 1024px){
       .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
     }
-
-    @media(max-width: 768px) {
+    @media(max-width: 768px){
       .topbar {
         flex-direction: column;
         align-items: flex-start;
       }
-
       .nav {
         margin-top: 10px;
         flex-wrap: wrap;
       }
-
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media(max-width: 480px){
       .gallery-grid {
         grid-template-columns: 1fr;
       }
@@ -301,31 +276,32 @@
   </style>
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="topbar" role="banner">
-    <a class="brand" href="index.html" aria-label="The Rustic Whisk Home">
-      <span class="emoji-logo">🧁</span>The Rustic Whisk
-    </a>
+    <div class="topbar-content">
+      <a class="brand" href="index.html" aria-label="The Rustic Whisk Home">
+        <img src="images/favicon.png" alt="The Rustic Whisk Logo" class="logo-img" />
+      </a>
 
-    <div class="nav" role="navigation">
-      <a href="index.html" class="link">
-        Home
-      </a>
-      <a href="about.html" class="link">
-        About
-      </a>
-      <a href="contact.html" class="link">
-        Contact
-      </a>
-      <a href="menu.html" class="link active" aria-current="page">
-        Menu
-      </a>
-      <a href="signup.html" class="link">
-        Sign Up
-      </a>
-      <a href="signin.html" class="link">
-        Sign In
-      </a>
+      <div class="nav-menu" role="navigation">
+        <a href="index.html" class="nav-link">
+          <span class="nav-text">Home</span>
+        </a>
+        <a href="about.html" class="nav-link">
+          <span class="nav-text">About</span>
+        </a>
+        <a href="contact.html" class="nav-link">
+          <span class="nav-text">Contact</span>
+        </a>
+        <a href="menu.html" class="nav-link active" aria-current="page">
+          <span class="nav-text">Menu</span>
+        </a>
+        <a href="signup.html" class="nav-link nav-cta">
+          <span class="nav-text">Sign Up</span>
+        </a>
+        <a href="signin.html" class="nav-link">
+          <span class="nav-text">Sign In</span>
+        </a>
+      </div>
     </div>
   </nav>
 
@@ -337,7 +313,8 @@
   <!-- Gallery Header -->
   <div class="gallery-header">
     <h1 class="gallery-title">Our Cakes</h1>
-    <p class="gallery-subtitle">Indulge in our handcrafted cakes, perfect for every celebration</p>
+    <br>
+    <p class="gallery-subtitle" style="margin-top: 20px;">Indulge in our handcrafted cakes, perfect for every celebration</p>
   </div>
 
   <!-- Products Gallery -->
@@ -345,146 +322,229 @@
     <div class="gallery-grid">
 
       <!-- Cake 1 -->
-      <a class="product-card" href="Trending Cakes.html" aria-label="View Trending Cake">
+      <div class="product-card">
+        <span class="product-price">₹399</span>
         <div class="product-image">
-          <img src="images/97.jpg" alt="Trending Cake" />
+          <img src="images/97.jpg" alt="Trending Cake" class="img-default" />
+          <img src="images/96.jpg" alt="Trending Cake Hover" class="img-hover" />
         </div>
         <div class="product-info">
           <h3>Trending Cakes</h3>
           <p>Our most loved cakes, baked fresh and trending this season!</p>
-          <button class="buy-btn">Buy Now</button>
         </div>
-      </a>
+      </div>
 
       <!-- Cake 2 -->
-      <a class="product-card" href="Theme Cakes.html" aria-label="View Theme Cake">
+      <div class="product-card">
+        <span class="product-price">₹499</span>
         <div class="product-image">
-          <img src="images/933.jpg" alt="Theme Cakes" />
+          <img src="images/933.jpg" alt="Theme Cakes" class="img-default" />
+          <img src="images/934.jpg" alt="Theme Cakes Hover" class="img-hover" />
         </div>
         <div class="product-info">
           <h3>Theme Cakes</h3>
-          <p>Our most loved cakes, baked fresh and trending this season!</p>
-          <button class="buy-btn">Buy Now</button>
+          <p>Customized cakes for every special occasion and celebration!</p>
         </div>
-      </a>
+      </div>
 
       <!-- Cake 3 -->
-      <a class="product-card" href="Classic Cakes.html" aria-label="View Classic Cake">
+      <div class="product-card">
+        <span class="product-price">₹349</span>
         <div class="product-image">
-          <img src="images/92.jpg" alt="Classic Cakes" />
+          <img src="images/92.jpg" alt="Classic Cakes" class="img-default" />
+          <img src="images/93.jpg" alt="Classic Cakes Hover" class="img-hover" />
         </div>
         <div class="product-info">
           <h3>Classic Cakes</h3>
           <p>Classic flavors, crafted with love – a slice of happiness in every bite</p>
-          <button class="buy-btn">Buy Now</button>
         </div>
-      </a>
+      </div>
 
       <!-- Cake 4 -->
-      <a class="product-card" href="birthday cakes.html" aria-label="View Birthday Cake">
+      <div class="product-card">
+        <span class="product-price">₹299</span>
         <div class="product-image">
-          <img src="images/91.jpg" alt="Birthday Cakes" />
+          <img src="images/91.jpg" alt="Birthday Cakes" class="img-default" />
+          <img src="images/95.jpg" alt="Birthday Cakes Hover" class="img-hover" />
         </div>
         <div class="product-info">
           <h3>Birthday Cakes</h3>
-          <p>Celebrate another year of joy with a cake that’s as special as you</p>
-          <button class="buy-btn">Buy Now</button>
+          <p>Celebrate another year of joy with a cake that's as special as you</p>
         </div>
-      </a>
+      </div>
 
       <!-- Cake 5 -->
-      <a class="product-card" href="Occassion Cakes.html" aria-label="View Occassion Cake">
+      <div class="product-card">
+        <span class="product-price">₹449</span>
         <div class="product-image">
-          <img src="images/90.jpg" alt="Occassion Cakes" />
+          <img src="images/90.jpg" alt="Occassion Cakes" class="img-default" />
+          <img src="images/89.jpg" alt="Occassion Cakes Hover" class="img-hover" />
         </div>
         <div class="product-info">
           <h3>Occassion Cakes</h3>
-          <p>From birthdays to anniversaries, our cakes are crafted to celebrate life’s sweetest moments</p>
-          <button class="buy-btn">Buy Now</button>
+          <p>From birthdays to anniversaries, our cakes are crafted to celebrate life's sweetest moments</p>
         </div>
-      </a>
+      </div>
 
       <!-- Cake 6 -->
-      <a class="product-card" href="Desserts.html" aria-label="View Desserts">
+      <div class="product-card">
+        <span class="product-price">₹249</span>
         <div class="product-image">
-          <img src="images/87.jpg" alt="Desserts" />
+          <img src="images/87.jpg" alt="Desserts" class="img-default" />
+          <img src="images/88.jpg" alt="Desserts Hover" class="img-hover" />
         </div>
         <div class="product-info">
           <h3>Desserts</h3>
           <p>Delicious, delightful, and decadently made – desserts that make every moment special</p>
-          <button class="buy-btn">Buy Now</button>
         </div>
-      </a>
+      </div>
+
+      <!-- Cake 7 -->
+      <div class="product-card">
+        <span class="product-price">₹379</span>
+        <div class="product-image">
+          <img src="images/86.jpg" alt="Chocolate Cakes" class="img-default" />
+          <img src="images/85.jpg" alt="Chocolate Cakes Hover" class="img-hover" />
+        </div>
+        <div class="product-info">
+          <h3>Chocolate Cakes</h3>
+          <p>Rich, decadent chocolate cakes for the ultimate indulgence</p>
+        </div>
+      </div>
+
+      <!-- Cake 8 -->
+      <div class="product-card">
+        <span class="product-price">₹329</span>
+        <div class="product-image">
+          <img src="images/84.jpg" alt="Fruit Cakes" class="img-default" />
+          <img src="images/83.jpg" alt="Fruit Cakes Hover" class="img-hover" />
+        </div>
+        <div class="product-info">
+          <h3>Fruit Cakes</h3>
+          <p>Fresh, fruity, and light – perfect for health-conscious celebrations</p>
+        </div>
+      </div>
 
     </div>
   </div>
 
-  <!-- Footer -->
-      <div class="footer">
-        <div class="footer-inner">
-          <div class="footer-grid">
-            <div>
-              <h3 class="footer-title">The Rustic Whisk</h3>
-              <p class="footer-desc">Freshly baked breads, cakes, cookies, pastries, and donuts — crafted with care every day. Taste the difference in every bite.</p>
+  <!-- Premium Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-header">
+            <div class="footer-brand">
+              <!-- <img src="images/favicon.png" alt="The Rustic Whisk" class="footer-logo" /> -->
+              <h3 class="footer-brand-title">The Rustic Whisk</h3>
+              <p class="footer-tagline">Baked with Love, Shared with Joy</p>
             </div>
-            <div>
-              <h4 class="footer-title">Quick Links</h4>
-              <ul class="footer-list">
-                <li><a href="index.html" class="footer-link">Menu</a></li>
-                <li><a href="about.html" class="footer-link">About us</a></li>
-                <li><a href="index.html#products" class="footer-link">Add to Cart</a></li>
-                <li><a href="contact.html" class="footer-link">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 class="footer-title">Contact & Hours</h4>
-              <ul class="contact-list">
-                <li><strong>Address:</strong> 123 Sweet Street, Dessert City</li>
-                <li><strong>Phone:</strong> (123) 456-7890</li>
-                <li><strong>Email:</strong> hello@therusticwhisk.example</li>
-              </ul>
-              <ul class="hours-list" style="margin-top:8px">
-                <li><strong>Hours:</strong> Mon–Fri: 8am–8pm</li>
-                <li>Sat–Sun: 9am–6pm</li>
-              </ul>
+            <div class="footer-cta">
+              <h4 class="footer-cta-title">Ready to Order?</h4>
+              <a href="signup.html" class="footer-order-btn">
+                <span>Get Started</span>
+              </a>
             </div>
           </div>
+          
+          <div class="footer-grid">
+            <div class="footer-column">
+              <h4 class="footer-column-title">Our Story</h4>
+              <p class="footer-desc">Since 2025, we've been crafting artisanal treats with the finest ingredients. Every bite tells a story of passion, tradition, and love.</p>
+              <div class="footer-stats">
+                <div class="stat-item">
+                  <span class="stat-number">500+</span>
+                  <span class="stat-label">Happy Customers</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">50+</span>
+                  <span class="stat-label">Unique Recipes</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="footer-column">
+              <h4 class="footer-column-title">Quick Links</h4>
+              <ul class="footer-links">
+                <li><a href="index.html" class="footer-link">Home</a></li>
+                <li><a href="about.html" class="footer-link">About Us</a></li>
+                <li><a href="menu.html" class="footer-link">Our Menu</a></li>
+                <li><a href="contact.html" class="footer-link">Contact</a></li>
+                <li><a href="index.html#products" class="footer-link">Shop</a></li>
+              </ul>
+            </div>
+            
+            <div class="footer-column">
+              <h4 class="footer-column-title">Visit Us</h4>
+              <div class="contact-info">
+                <div class="contact-item">
+                  <div class="contact-details">
+                    <p class="contact-label">Address</p>
+                    <p class="contact-main">123 Sweet Street</p>
+                    <p class="contact-sub">Dessert City, DC 12345</p>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <div class="contact-details">
+                    <p class="contact-label">Phone</p>
+                    <p class="contact-main">(123) 456-7890</p>
+                    <p class="contact-sub">Call for custom orders</p>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <div class="contact-details">
+                    <p class="contact-label">Email</p>
+                    <p class="contact-main">hello@therusticwhisk.com</p>
+                    <p class="contact-sub">We'd love to hear from you</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="footer-column">
+              <h4 class="footer-column-title">Hours & Social</h4>
+              <div class="hours-info">
+                <div class="hours-item">
+                  <span class="hours-days">Monday - Friday</span>
+                  <span class="hours-time">8:00 AM - 8:00 PM</span>
+                </div>
+                <div class="hours-item">
+                  <span class="hours-days">Saturday - Sunday</span>
+                  <span class="hours-time">9:00 AM - 6:00 PM</span>
+                </div>
+              </div>
+              <div class="social-section">
+                <p class="social-title">Follow Our Journey</p>
+                <div class="social-links">
+                  <a href="#" class="social-link facebook" aria-label="Facebook">
+                    <span class="social-name">Facebook</span>
+                  </a>
+                  <a href="#" class="social-link instagram" aria-label="Instagram">
+                    <span class="social-name">Instagram</span>
+                  </a>
+                  <a href="#" class="social-link twitter" aria-label="Twitter">
+                    <span class="social-name">Twitter</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <div class="footer-bottom">
-            <div class="copyright">&copy; 2025 The Rustic Whisk. All rights reserved.</div>
-            <div class="social">
-              <a href="#" class="social-link" aria-label="Facebook" title="Facebook">Facebook</a>
-              <a href="#" class="social-link" aria-label="Twitter" title="Twitter">Twitter</a>
-              <a href="#" class="social-link" aria-label="Instagram" title="Instagram">Instagram</a>
+            <div class="footer-bottom-left">
+              <p class="copyright">&copy; 2025 The Rustic Whisk. All rights reserved.</p>
+              <div class="footer-legal">
+                <a href="#" class="legal-link">Privacy Policy</a>
+                <span class="separator">|</span>
+                <a href="#" class="legal-link">Terms of Service</a>
+              </div>
+            </div>
+            <div class="footer-bottom-right">
+              <p class="footer-credit">Made with love for bakery lovers everywhere</p>
             </div>
           </div>
         </div>
-      </div>
+      </footer>
 
-  <script>
-    // Simple interaction script
-    document.addEventListener('DOMContentLoaded', function() {
-      // Add hover effects to product cards
-      const productCards = document.querySelectorAll('.product-card');
-      productCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-          this.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
-        });
-        card.addEventListener('mouseleave', function() {
-          this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-        });
-      });
-
-      // Add click feedback for buy buttons
-      const buyBtns = document.querySelectorAll('.buy-btn');
-      buyBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          alert('Added to cart! (This is a demo)');
-        });
-      });
-    });
-  </script>
+  <script src="./script.js"></script>
 </body>
 </html>
 
