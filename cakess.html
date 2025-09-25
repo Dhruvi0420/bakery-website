@@ -303,31 +303,29 @@
 <body>
   <!-- Navbar -->
   <nav class="topbar" role="banner">
-    <div class="topbar-content">
-      <a class="brand" href="index.html" aria-label="The Rustic Whisk Home">
-        <img src="images/favicon.png" alt="The Rustic Whisk Logo" class="logo-img" />
-      </a>
+    <a class="brand" href="index.html" aria-label="The Rustic Whisk Home">
+      <span class="emoji-logo">🧁</span>The Rustic Whisk
+    </a>
 
-      <div class="nav-menu" role="navigation">
-        <a href="index.html" class="nav-link">
-          <span class="nav-text">Home</span>
-        </a>
-        <a href="about.html" class="nav-link">
-          <span class="nav-text">About</span>
-        </a>
-        <a href="contact.html" class="nav-link">
-          <span class="nav-text">Contact</span>
-        </a>
-        <a href="menu.html" class="nav-link active" aria-current="page">
-          <span class="nav-text">Menu</span>
-        </a>
-        <a href="signup.html" class="nav-link nav-cta">
-          <span class="nav-text">Sign Up</span>
-        </a>
-        <a href="signin.html" class="nav-link">
-          <span class="nav-text">Sign In</span>
-        </a>
-      </div>
+    <div class="nav" role="navigation">
+      <a href="index.html" class="link">
+        Home
+      </a>
+      <a href="about.html" class="link">
+        About
+      </a>
+      <a href="contact.html" class="link">
+        Contact
+      </a>
+      <a href="menu.html" class="link active" aria-current="page">
+        Menu
+      </a>
+      <a href="signup.html" class="link">
+        Sign Up
+      </a>
+      <a href="signin.html" class="link">
+        Sign In
+      </a>
     </div>
   </nav>
 
@@ -462,10 +460,31 @@
         </div>
       </div>
 
-    </div>
-  </div>
+  <script>
+    // Simple interaction script
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add hover effects to product cards
+      const productCards = document.querySelectorAll('.product-card');
+      productCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
+        });
+        card.addEventListener('mouseleave', function() {
+          this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+        });
+      });
 
-  <script src="./script.js"></script>
+      // Add click feedback for buy buttons
+      const buyBtns = document.querySelectorAll('.buy-btn');
+      buyBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          alert('Added to cart! (This is a demo)');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
 
