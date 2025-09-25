@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Profile | The Rustic Whisk</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="profile-page">
+  <div class="stage">
+    <div class="card">
+
+      <!-- Navigation Bar -->
+      <nav class="topbar" role="banner">
+        <div class="topbar-content">
+          <a class="brand" href="index1.html" aria-label="The Rustic Whisk Home">
+            <img src="images/favicon.png" alt="The Rustic Whisk Logo" class="logo-img" />
+          </a>
+
+          <div class="nav-menu" role="navigation">
+            <a href="index1.html" class="nav-link">
+              <span class="nav-text">Home</span>
+            </a>
+            <a href="about.html" class="nav-link">
+              <span class="nav-text">About</span>
+            </a>
+            <a href="contact.html" class="nav-link">
+              <span class="nav-text">Contact</span>
+            </a>
+            <a href="menu.html" class="nav-link">
+              <span class="nav-text">Menu</span>
+            </a>
+            <a href="profile.html" class="nav-link nav-cta active" aria-current="page">
+              <span class="nav-text">Profile</span>
+            </a>
+            <a href="#" id="logoutBtn" class="nav-link">
+              <span class="nav-text">Logout</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Header -->
+      <header class="gallery-header">
+        <h1 class="gallery-title">Your Profile</h1>
+        <p class="gallery-subtitle">Manage your account and see all your past orders in one place.</p>
+      </header>
+
+      <main class="gallery-products" role="main" aria-live="polite">
+        <section class="menu-section" style="max-width:900px; margin:0 auto;">
+          <!-- Guest section -->
+          <div data-auth-show="guest" style="display:none">
+            <h3>Welcome!</h3>
+            <p class="hint" style="margin:0 0 10px;">Please sign in to view your order history.</p>
+            <button id="profileSignInBtn" class="btn btn-search" type="button">Sign In</button>
+          </div>
+
+          <!-- User section -->
+          <div data-auth-show="user" style="display:block">
+            <div class="profile-card-header" style="margin-bottom:20px; background: rgba(255,255,255,.95); border:2px solid #e2d3c6; border-radius:18px; padding:24px; box-shadow: 0 8px 18px rgba(0,0,0,.08);">
+              <div style="display: grid; gap: 12px;">
+                <h3 style="margin:0; color:#3A2C29; font-size: 24px;">Hello, <span id="profileUserName">User</span>! 👋</h3>
+                <div style="display: grid; gap: 8px; color: #5b4032;">
+                  <p style="margin:0;"><strong>📧 Email:</strong> <span id="profileUserEmail"></span></p>
+                  <p style="margin:0;"><strong>📱 Phone:</strong> <span id="profileUserPhone"></span></p>
+                  <p style="margin:0;"><strong>📅 Member Since:</strong> <span id="profileUserDate"></span></p>
+                </div>
+                <div style="margin-top: 12px;">
+                  <button id="signOutBtn" class="btn btn-search" type="button" style="background:#A56336; color: white; padding: 10px 20px;">Sign Out</button>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+            <h3 style="margin:10px 0; color:#3A2C29;">Previous Orders</h3>
+            <div id="ordersEmpty" style="display:none; text-align:center; color:#5b4032; margin:10px 0 14px;">You have no orders yet.</div>
+            <ul id="ordersList" class="cart-items"></ul>
+            <div class="cart-footer" style="padding-left:0; padding-right:0;">
+              <button id="clearOrdersBtn" class="btn-checkout" type="button" style="display:none; background:#6b4a39;">Clear Order History</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="footer-inner">
+          <div class="footer-bottom">
+            <div class="copyright">&copy; 2025 The Rustic Whisk. All rights reserved.</div>
+            <div class="social">
+              <a href="#" class="social-link" aria-label="Facebook" title="Facebook">Facebook</a>
+              <a href="#" class="social-link" aria-label="Twitter" title="Twitter">Twitter</a>
+              <a href="#" class="social-link" aria-label="Instagram" title="Instagram">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+  <script>
+    // Load user profile data when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      const userData = localStorage.getItem('userData');
+      
+      if (isLoggedIn === 'true' && userData) {
+        const user = JSON.parse(userData);
+        
+        // Display user information
+        document.getElementById('profileUserName').textContent = user.fullName || 'User';
+        document.getElementById('profileUserEmail').textContent = user.email || 'N/A';
+        document.getElementById('profileUserPhone').textContent = user.phone || 'N/A';
+        
+        // Format and display signup date
+        if (user.signupDate) {
+          const date = new Date(user.signupDate);
+          document.getElementById('profileUserDate').textContent = date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
+        } else {
+          document.getElementById('profileUserDate').textContent = 'N/A';
+        }
+        
+        // Show user section
+        document.querySelector('[data-auth-show="user"]').style.display = 'block';
+        document.querySelector('[data-auth-show="guest"]').style.display = 'none';
+      } else {
+        // Show guest section
+        document.querySelector('[data-auth-show="user"]').style.display = 'none';
+        document.querySelector('[data-auth-show="guest"]').style.display = 'block';
+      }
+      
+      // Handle logout from navbar
+      document.getElementById('logoutBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userData');
+        localStorage.removeItem('userPassword');
+        alert('You have been logged out successfully!');
+        window.location.href = 'index1.html';
+      });
+      
+      // Handle logout from profile section
+      document.getElementById('signOutBtn').addEventListener('click', function() {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userData');
+        localStorage.removeItem('userPassword');
+        alert('You have been logged out successfully!');
+        window.location.href = 'index1.html';
+      });
+      
+      // Handle sign in button for guests
+      const signInBtn = document.getElementById('profileSignInBtn');
+      if (signInBtn) {
+        signInBtn.addEventListener('click', function() {
+          window.location.href = 'signin.html';
+        });
+      }
+    });
+  </script>
+</body>
+</html>

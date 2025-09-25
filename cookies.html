@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Our Cupcakes - Delicious handcrafted cupcakes from The Rustic Whisk" />
+  <title>Our Cupcakes - The Rustic Whisk</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ===== Reset ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(white,  rgb(221, 188, 188), white);
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Navbar styles inherit from main styles.css */
+    .btn-signin {
+      padding: 5px 12px;
+      background: #d78e55;
+      color: #fff;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+    }
+
+    /* ===== Banner Image ===== */
+    .banner-image {
+      width: 100%;
+      height: 600px; /* bigger box */
+      max-height: 600px; /* optional, prevents it from being too tall */
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    .banner-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* fills the container nicely */
+      display: block;
+    }
+
+    /* ===== Gallery Header ===== */
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .gallery-title { 
+      font-size: 60px;
+       color: #5b4032;
+      font-family:'Pacifico',Monaco;
+      }
+    .gallery-subtitle {
+      font-size: 25px;
+      color: #5b4032;
+    }
+
+    /* ===== Products Grid ===== */
+    .gallery-products {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      margin-bottom: 50px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-price {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #d78e55;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      z-index: 2;
+    }
+    .product-image {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.4s ease;
+    }
+    .product-image .img-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+    .product-card:hover .img-hover {
+      opacity: 1;
+    }
+    .product-card:hover .img-default {
+      opacity: 0;
+    }
+    .product-info {
+    padding: 15px;
+    padding-top: 40px;
+}
+    
+    .product-info h3 {
+      color: #d78e55;
+      margin-bottom: 8px;
+    }
+    .product-info p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ===== Footer ===== */
+
+.footer{ position:relative; z-index:1; padding: 16px 28px 28px; margin-top:auto; }
+.footer-inner{ background: rgba(255,255,255,.75); border:2px solid #e2d3c6; border-radius:18px; padding:16px; box-shadow: 0 8px 18px rgba(0,0,0,.08); }
+.footer-grid{ display:grid; grid-template-columns: 1.2fr 1fr 1fr; gap:20px; align-items:start; }
+.footer-title{ margin:0 0 10px; font-size:16px; font-weight:800; color:#3A2C29; }
+.footer-desc{ color:#5b4032; margin:8px 0 12px; }
+.footer-list, .contact-list, .hours-list{ list-style:none; padding:0; margin:0; }
+.footer-link{ color:#5b4032; text-decoration:none; opacity:.9; transition: opacity .2s ease; }
+.footer-link:hover{ opacity:1; }
+.footer .social{ margin-top:12px; }
+.footer-bottom{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:12px; border-top:1px dashed #e0cdbf; padding-top:10px; }
+.copyright{ color:#5b4032; font-size:14px; }
+
+    .social-link {
+      margin-left: 10px;
+      font-size: 1.2rem;
+    }
+
+    /* Responsive */
+    @media(max-width: 1024px){
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media(max-width: 768px){
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav {
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media(max-width: 480px){
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar" role="banner">
+    <div class="topbar-content">
+      <a class="brand" href="index1.html" aria-label="The Rustic Whisk Home">
+        <img src="images/favicon.png" alt="The Rustic Whisk Logo" class="logo-img" />
+      </a>
+
+      <div class="nav-menu" role="navigation">
+        <a href="index1.html" class="nav-link">
+          <span class="nav-text">Home</span>
+        </a>
+        <a href="about.html" class="nav-link">
+          <span class="nav-text">About</span>
+        </a>
+        <a href="contact.html" class="nav-link">
+          <span class="nav-text">Contact</span>
+        </a>
+        <a href="menu.html" class="nav-link active" aria-current="page">
+          <span class="nav-text">Menu</span>
+        </a>
+        <a href="signup.html" class="nav-link nav-cta">
+          <span class="nav-text">Sign Up</span>
+        </a>
+        <a href="signin.html" class="nav-link">
+          <span class="nav-text">Sign In</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Banner Image -->
+  <div class="banner-image">
+    <img src="images/110.jpg" alt="Cookies Banner" />
+  </div>
+
+  <!-- Gallery Header -->
+  <div class="gallery-header">
+    <h1 class="gallery-title">Cookies</h1>
+    <br>
+    <p class="gallery-subtitle">Freshly baked cookies that bring warmth, sweetness, and smiles in every bite</p>
+  </div>
+
+  <!-- Products Gallery -->
+  <div class="gallery-products">
+    <div class="gallery-grid">
+
+      <!-- Vanilla -->
+      <div class="product-card">
+        <span class="product-price">₹199</span>
+        <div class="product-image">
+          <img src="images/111.webp" alt="Choco Chip Cookies" class="img-default" />
+          <img src="images/112.webp" alt="Choco Chip Cookies Hover" class="img-hover" />
+        </div>
+        <div class="product-info">
+          <h3>Choco Chip Cookies</h3>
+          <p>A bite of nostalgia – soft, warm, and perfectly studded with chocolate chips</p>
+        </div>
+      </div>
+
+      <!-- Chocolate -->
+      <div class="product-card">
+        <span class="product-price">₹219</span>
+        <div class="product-image">
+          <img src="images/113.webp" alt="Wholesome Corn Cookies"class="img-default"/>
+          <img src="images/114.webp" alt="Wholesome Corn Cookies Hover" class="img-hover" />
+        </div>
+        <div class="product-info">
+          <h3>Wholesome Corn Cookies</h3>
+          <p>Golden crunch in every bite – our Wholesome Corn Cookies are pure delight!</p>
+        </div>
+      </div>
+
+      <!-- Red Velvet -->
+      <div class="product-card">
+        <span class="product-price">₹249</span>
+        <div class="product-image">
+          <img src="images/115.webp" alt="Handmade Almond Cookies"class="img-default"/>
+          <img src="images/116.webp" alt="Handmade Almond Cookies Hover" class="img-hover" />
+        </div>
+        <div class="product-info">
+          <h3>Handmade Almond Cookies</h3>
+          <p>Crunchy, nutty, and baked with love – our Handmade Almond Cookies are pure joy!</p>
+        </div>
+      </div>
+
+      <!-- Strawberry -->
+      <div class="product-card">
+        <span class="product-price">₹229</span>
+        <div class="product-image">
+          <img src="images/101.jpg" alt="Mixed Flavor Cookies" class="img-default"/>
+          <img src="images/102.jpg" alt="Mixed Flavor Cookies Hover" class="img-hover" />
+        </div>
+        <div class="product-info">
+          <h3>Mixed Flavor Cookies</h3>
+          <p>Indulge in our Mixed Flavor Cookies – a delightful combo of classic and gourmet favorites.</p>
+        </div>
+      </div>
+
+      <!-- Lemon -->
+      <div class="product-card">
+        <span class="product-price">₹259</span>
+        <div class="product-image">
+          <img src="images/117.webp" alt="Coconut Cookies" class="img-default" />
+          <img src="images/118.webp" alt="Coconut Cookies Hover" class="img-hover" />
+        </div>
+        <div class="product-info">
+          <h3>Coconut Cookies</h3> 
+          <p>Golden and crisp Coconut Cookies baked with love and tropical flavor</p>
+        </div>
+      </div>
+
+      
+      <!-- Carrot -->
+      <div class="product-card">
+        <span class="product-price">₹299</span>
+        <div class="product-image">
+          <img src="images/119.webp" alt="Pista Cookies" class="img-default" />
+          <img src="images/120.webp" alt="Pista Cookies Hover" class="img-hover" />
+        </div>
+        <div class="product-info">
+          <h3>Pista Cookies</h3>
+          <p>Deliciously nutty Pista Cookies, baked crisp and golden</p>
+        </div>
+      </div>
+      
+      <!-- Funfetti -->
+      <div class="product-card">
+        <span class="product-price">₹279</span>
+        <div class="product-image">
+          <img src="images/121.webp" alt="Multi Grain Cookies" class="img-default" />
+          <img src="images/122.webp" alt="Multi Grain Cookies Hover" class="img-hover" />
+        </div>
+        <div class="product-info">
+          <h3>Multi Grain Cookies</h3>
+          <p>Nutritious and tasty – our Multi Grain Cookies are a perfect mix of health and flavor</p>
+        </div>
+      </div>
+      <!-- Peanut Butter -->
+      <div class="product-card">
+        <span class="product-price">₹289</span>
+        <div class="product-image">
+          <img src="images/123.webp" alt="Crispy Jeera Cookies" class="img-default" />
+          <img src="images/124.webp" alt="Crispy Jeera Cookies Hover" class="img-hover" />
+        </div>
+        <div class="product-info">
+          <h3>Crispy Jeera Cookies</h3>
+          <p>Crispy Jeera Cookies – a timeless teatime snack with the perfect balance of spice and crunch</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+      <div class="footer">
+        <div class="footer-inner">
+          <div class="footer-grid">
+            <div>
+              <h3 class="footer-title">The Rustic Whisk</h3>
+              <p class="footer-desc">Freshly baked breads, cakes, cookies, pastries, and donuts — crafted with care every day. Taste the difference in every bite.</p>
+            </div>
+            <div>
+              <h4 class="footer-title">Quick Links</h4>
+              <ul class="footer-list">
+                <li><a href="index1.html" class="footer-link">Menu</a></li>
+                <li><a href="about.html" class="footer-link">About us</a></li>
+                <li><a href="index1.html#products" class="footer-link">Add to Cart</a></li>
+                <li><a href="contact.html" class="footer-link">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="footer-title">Contact & Hours</h4>
+              <ul class="contact-list">
+                <li><strong>Address:</strong> 123 Sweet Street, Dessert City</li>
+                <li><strong>Phone:</strong> (123) 456-7890</li>
+                <li><strong>Email:</strong> hello@therusticwhisk.example</li>
+              </ul>
+              <ul class="hours-list" style="margin-top:8px">
+                <li><strong>Hours:</strong> Mon–Fri: 8am–8pm</li>
+                <li>Sat–Sun: 9am–6pm</li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="copyright">&copy; 2025 The Rustic Whisk. All rights reserved.</div>
+            <div class="social">
+              <a href="#" class="social-link" aria-label="Facebook" title="Facebook">Facebook</a>
+              <a href="#" class="social-link" aria-label="Twitter" title="Twitter">Twitter</a>
+              <a href="#" class="social-link" aria-label="Instagram" title="Instagram">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

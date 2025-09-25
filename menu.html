@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Menu - The Rustic Whisk" />
+  <title>Menu - The Rustic Whisk</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .menu-header{ text-align:center; padding: 40px 28px 10px; }
+    .menu-header .gallery-title{ margin-bottom:8px; }
+    .menu-container{ padding: 20px 28px 40px; }
+    .menu-grid{ max-width: 1100px; margin:0 auto; display:grid; grid-template-columns: repeat(2, 1fr); gap:18px; }
+    .category-card{ background:#fff; border:2px solid #e2d3c6; border-radius:16px; box-shadow: 0 8px 18px rgba(0,0,0,.08); padding:14px 16px; }
+    .category-title{ margin:0 0 8px; font-size:20px; color:#5b4032; font-weight:800; }
+    .item-list{ list-style:none; margin:0; padding:0; display:grid; gap:6px; }
+    .item-list a{ text-decoration:none; color:#3A2C29; font-weight:600; }
+    .item-list a:hover{ text-decoration:underline; }
+    .item{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .item .arrow{ color:#A56336; }
+    @media (max-width: 780px){ .menu-grid{ grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="card">
+
+      <nav class="topbar" role="banner">
+        <div class="topbar-content">
+          <a class="brand" href="index1.html" aria-label="The Rustic Whisk Home">
+            <img src="images/favicon.png" alt="The Rustic Whisk Logo" class="logo-img" />
+          </a>
+
+          <div class="nav-menu" role="navigation">
+            <a href="index1.html" class="nav-link">
+              <span class="nav-text">Home</span>
+            </a>
+            <a href="about.html" class="nav-link">
+              <span class="nav-text">About</span>
+            </a>
+            <a href="contact.html" class="nav-link">
+              <span class="nav-text">Contact</span>
+            </a>
+            <a href="menu.html" class="nav-link active" aria-current="page">
+              <span class="nav-text">Menu</span>
+            </a>
+            <a href="signup.html" class="nav-link nav-cta">
+              <span class="nav-text">Sign Up</span>
+            </a>
+            <a href="signin.html" class="nav-link">
+              <span class="nav-text">Sign In</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Background gradient -->
+      <div class="bg-gradient"></div>
+
+      <div class="menu-header">
+        <h1 class="gallery-title">Our Menu</h1>
+        <p class="gallery-subtitle">Browse all categories and items we bake fresh every day</p>
+      </div>
+
+      <div class="menu-container">
+        <div class="menu-grid">
+          <!-- Cakes -->
+          <section class="category-card">
+            <h3 class="category-title">Cakes</h3>
+            <ul class="item-list">
+              <li class="item"><a href="cakess.html">All Cakes</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="Trending Cakes.html">Trending Cakes</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="Theme Cakes.html">Theme Cakes</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="Classic Cakes.html">Classic Cakes</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="birthday cakes.html">Birthday Cakes</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="Occassion Cakes.html">Occasion Cakes</a> <span class="arrow">›</span></li>
+            </ul>
+          </section>
+
+          <!-- Cupcakes -->
+          <section class="category-card">
+            <h3 class="category-title">Cupcakes</h3>
+            <ul class="item-list">
+              <li class="item"><a href="cupcakes.html">All Cupcakes</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="cupcakes.html">Vanilla Coffee Cupcakes</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="cupcakes.html">Chocolate Cupcakes</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="cupcakes.html">Red Velvet Cupcakes</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="cupcakes.html">Oreo Cream Cupcakes</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="cupcakes.html">Cupcake Delight Box</a> <span class="arrow">›</span></li>
+            </ul>
+          </section>
+
+          <!-- Breads -->
+          <section class="category-card">
+            <h3 class="category-title">Breads</h3>
+            <ul class="item-list">
+              <li class="item"><a href="bread.html">Sourdough Bread</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="bread.html">French Baguette</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="bread.html">Focaccia Bread</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="bread.html">Multigrain Bread</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="bread.html">Ciabatta Bread</a> <span class="arrow">›</span></li>
+            </ul>
+          </section>
+
+          <!-- Cookies -->
+          <section class="category-card">
+            <h3 class="category-title">Cookies</h3>
+            <ul class="item-list">
+              <li class="item"><a href="cookies.html">Chocolate Chip Cookies</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="cookies.html">Oatmeal Cookies</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="cookies.html">Sugar Cookies</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="cookies.html">Double Chocolate Cookies</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="cookies.html">Snickerdoodle Cookies</a> <span class="arrow">›</span></li>
+            </ul>
+          </section>
+
+          <!-- Pastries -->
+          <section class="category-card">
+            <h3 class="category-title">Pastries</h3>
+            <ul class="item-list">
+              <li class="item"><a href="pastries.html">Croissants</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="pastries.html">Pain au Chocolat</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="pastries.html">Danish Pastries</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="pastries.html">Eclairs</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="pastries.html">Napoleons</a> <span class="arrow">›</span></li>
+            </ul>
+          </section>
+
+          <!-- Donuts -->
+          <section class="category-card">
+            <h3 class="category-title">Donuts</h3>
+            <ul class="item-list">
+              <li class="item"><a href="donuts.html">Glazed Donuts</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="donuts.html">Chocolate Donuts</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="donuts.html">Sprinkle Donuts</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="donuts.html">Jelly Filled Donuts</a> <span class="arrow">›</span></li>
+              <li class="item"><a href="donuts.html">Boston Cream Donuts</a> <span class="arrow">›</span></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="footer-inner">
+          <div class="footer-grid">
+            <div>
+              <h3 class="footer-title">The Rustic Whisk</h3>
+              <p class="footer-desc">Freshly baked breads, cakes, cookies, pastries, and donuts — crafted with care every day. Taste the difference in every bite.</p>
+            </div>
+            <div>
+              <h4 class="footer-title">Quick Links</h4>
+              <ul class="footer-list">
+                <li><a href="index1.html" class="footer-link">Home</a></li>
+                <li><a href="about.html" class="footer-link">About us</a></li>
+                <li><a href="cart.html" class="footer-link">Cart</a></li>
+                <li><a href="contact.html" class="footer-link">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="footer-title">Contact & Hours</h4>
+              <ul class="contact-list">
+                <li><strong>Address:</strong> 123 Sweet Street, Dessert City</li>
+                <li><strong>Phone:</strong> (123) 456-7890</li>
+                <li><strong>Email:</strong> hello@therusticwhisk.example</li>
+              </ul>
+              <ul class="hours-list" style="margin-top:8px">
+                <li><strong>Hours:</strong> Mon–Fri: 8am–8pm</li>
+                <li>Sat–Sun: 9am–6pm</li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="copyright">&copy; 2025 The Rustic Whisk. All rights reserved.</div>
+            <div class="social">
+              <a href="#" class="social-link" aria-label="Facebook" title="Facebook">Facebook</a>
+              <a href="#" class="social-link" aria-label="Twitter" title="Twitter">Twitter</a>
+              <a href="#" class="social-link" aria-label="Instagram" title="Instagram">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trending Cakes - The Rustic Whisk</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(white,  rgb(221, 188, 188), white);
+      margin: 0;
+      padding: 0;
+    }
+    /* Navbar styles inherit from main styles.css */
+    .banner-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+    .gallery-header {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .gallery-title { 
+      font-size: 60px;
+       color: #5b4032;
+      font-family:'Pacifico',Monaco;
+      }
+    .gallery-products {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      margin-bottom: 50px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-price {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #d78e55;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      z-index: 2;
+    }
+    .product-image {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.4s ease;
+    }
+    .product-image .img-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+    .product-card:hover .img-hover {
+      opacity: 1;
+    }
+    .product-card:hover .img-default {
+      opacity: 0;
+    }
+    .product-info {
+      padding: 15px;
+    }
+    .product-info h3 {
+      color: #d78e55;
+      margin-bottom: 8px;
+    }
+    .product-info p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .add-to-cart {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color:#A56336 ;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+/* .add-to-cart:hover {
+  background-color: #e63e5c;
+} */
+
+    /* Footer */
+.footer{ position:relative; z-index:1; padding: 16px 28px 28px; margin-top:auto; }
+.footer-inner{ background: rgba(255,255,255,.75); border:2px solid #e2d3c6; border-radius:18px; padding:16px; box-shadow: 0 8px 18px rgba(0,0,0,.08); }
+.footer-grid{ display:grid; grid-template-columns: 1.2fr 1fr 1fr; gap:20px; align-items:start; }
+.footer-title{ margin:0 0 10px; font-size:16px; font-weight:800; color:#3A2C29; }
+.footer-desc{ color:#5b4032; margin:8px 0 12px; }
+.footer-list, .contact-list, .hours-list{ list-style:none; padding:0; margin:0; }
+.footer-link{ color:#5b4032; text-decoration:none; opacity:.9; transition: opacity .2s ease; }
+.footer-link:hover{ opacity:1; }
+.footer .social{ margin-top:12px; }
+.footer-bottom{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:12px; border-top:1px dashed #e0cdbf; padding-top:10px; }
+.copyright{ color:#5b4032; font-size:14px; }
+
+    @media(max-width: 1024px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media(max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="topbar" role="banner">
+    <div class="topbar-content">
+      <a class="brand" href="index1.html" aria-label="The Rustic Whisk Home">
+        <img src="images/favicon.png" alt="The Rustic Whisk Logo" class="logo-img" />
+      </a>
+
+      <div class="nav-menu" role="navigation">
+        <a href="index1.html" class="nav-link">
+          <span class="nav-text">Home</span>
+        </a>
+        <a href="about.html" class="nav-link">
+          <span class="nav-text">About</span>
+        </a>
+        <a href="contact.html" class="nav-link">
+          <span class="nav-text">Contact</span>
+        </a>
+        <a href="menu.html" class="nav-link active" aria-current="page">
+          <span class="nav-text">Menu</span>
+        </a>
+        <a href="signup.html" class="nav-link nav-cta">
+          <span class="nav-text">Sign Up</span>
+        </a>
+        <a href="signin.html" class="nav-link">
+          <span class="nav-text">Sign In</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Banner
+  <div class="banner-image">
+    <img src="images/cake-banner.jpg" alt="Trending Cakes Banner">
+  </div> -->
+
+  <!-- Gallery Header -->
+  <div class="gallery-header">
+    <h1 class="gallery-title">Birthday Cakes</h1>
+    
+  </div>
+
+  <!-- 8 Cake Cards -->
+  <div class="gallery-products">
+    <div class="gallery-grid">
+
+      <div class="product-card">
+  <span class="product-price">₹259</span>
+  <div class="product-image">
+    <img src="images/k1.webp" alt="Hello Kitty Treat Cake" class="img-default" />
+    <img src="images/k2.webp"alt="Hello Kitty Treat Cake Hover" class="img-hover" />
+  </div>
+  <div class="product-info">
+    <h3>Hello Kitty Treat Cake</h3>
+    <p>Add a dash of cuteness to your celebration with our Hello Kitty Treat Cake – as sweet as it looks</p>
+    
+  </div>
+</div>
+
+
+
+      <div class="product-card">
+  <span class="product-price">₹259</span>
+  <div class="product-image">
+    <img src="images/fly1.webp" alt="Beautiful Butterfly Cake" class="img-default" />
+    <img src="images/fly2.webp" alt="Beautiful Butterfly Cake Hover" class="img-hover" />
+  </div>
+  <div class="product-info">
+    <h3>Beautiful Butterfly Cake</h3>
+    <p>Grace your celebration with the elegance of our Beautiful Butterfly Cake – delicate, colorful, and full of charm</p>
+    
+  </div>
+</div>
+
+      <div class="product-card">
+  <span class="product-price">₹259</span>
+  <div class="product-image">
+    <img src="images/cute1.webp" alt="Cute Bear Half cake" class="img-default" />
+    <img src="images/cute2.webp" alt="Cute Bear Half cake Hover" class="img-hover" />
+  </div>
+  <div class="product-info">
+    <h3>Cute Bear Half cake</h3>
+    <p>Half the size, double the cuteness – our Cute Bear Half Cake is perfect for little celebrations</p>
+    
+  </div>
+</div>
+
+      <div class="product-card">
+  <span class="product-price">₹259</span>
+  <div class="product-image">
+    <img src="images/photo1.webp" alt="KitKat Gems Photo Cake" class="img-default" />
+    <img src="images/photo2.webp " alt="KitKat Gems Photo Cake Hover" class="img-hover" />
+  </div>
+  <div class="product-info">
+    <h3>KitKat Gems Photo Cake</h3>
+    <p>Wrapped in KitKat, sprinkled with Gems, topped with your special photo</p>
+    
+  </div>
+</div>
+
+      <div class="product-card">
+  <span class="product-price">₹259</span>
+  <div class="product-image">
+    <img src="images/va1.webp" alt="Choco Vanilla Delight Cake"class="img-default"/>
+    <img src="images/va2.webp" alt="Choco Vanilla Delight Cake Hover" class="img-hover" />
+  </div>
+  <div class="product-info">
+    <h3>Choco Vanilla Delight Cake</h3>
+    <p>A heavenly mix of creamy vanilla and decadent chocolate that makes every bite unforgettable.</p>
+    
+  </div>
+</div>
+
+      <div class="product-card">
+  <span class="product-price">₹259</span>
+  <div class="product-image">
+    <img src="images/dom1.webp" alt=" Birthday Chocolate Pinata Cake" class="img-default" />
+    <img src="images/dom2.webp" alt=" Birthday Chocolate Pinata Cake Hover" class="img-hover" />
+  </div>
+  <div class="product-info">
+    <h3> Birthday Chocolate Pinata Cake</h3>
+    <p>A crunchy surprise, a chocolaty delight – celebrate your special day the sweetest way</p>
+    
+  </div>
+</div>
+
+<div class="product-card">
+  <span class="product-price">₹259</span>
+  <div class="product-image">
+    <img src="images/heart1.webp" alt="Heart Red Velvet Cake" class="img-default" />
+    <img src="images/heart2.webp" alt="Heart Red Velvet Cake Hover" class="img-hover" />
+  </div>
+  <div class="product-info">
+    <h3>Heart Red Velvet Cake</h3>
+    <p>A perfect blend of elegance and sweetness, crafted into a heart for your loved one.</p>
+    
+  </div>
+</div>
+
+      <div class="product-card">
+  <span class="product-price">₹259</span>
+  <div class="product-image">
+    <img src="images/beach1.webp" alt="Beachside Bliss Cake" class="img-default" />
+    <img src="images/beach2.webp" alt="Beachside Bliss Cake Hover" class="img-hover" />
+  </div>
+  <div class="product-info">
+    <h3>Beachside Bliss Cake</h3>
+    <p>Bring the beach vibes to your celebration with our Beachside Bliss Cake – sweet, refreshing, and full of joy</p>
+    
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+      <div class="footer">
+        <div class="footer-inner">
+          <div class="footer-grid">
+            <div>
+              <h3 class="footer-title">The Rustic Whisk</h3>
+              <p class="footer-desc">Freshly baked breads, cakes, cookies, pastries, and donuts — crafted with care every day. Taste the difference in every bite.</p>
+            </div>
+            <div>
+              <h4 class="footer-title">Quick Links</h4>
+              <ul class="footer-list">
+                <li><a href="index1.html" class="footer-link">Home</a></li>
+                <li><a href="about.html" class="footer-link">About us</a></li>
+                <li><a href="cakess.html" class="footer-link">cakes</a></li>
+                <li><a href="contact.html" class="footer-link">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="footer-title">Contact & Hours</h4>
+              <ul class="contact-list">
+                <li><strong>Address:</strong> 123 Sweet Street, Dessert City</li>
+                <li><strong>Phone:</strong> (123) 456-7890</li>
+                <li><strong>Email:</strong> hello@therusticwhisk.example</li>
+              </ul>
+              <ul class="hours-list" style="margin-top:8px">
+                <li><strong>Hours:</strong> Mon–Fri: 8am–8pm</li>
+                <li>Sat–Sun: 9am–6pm</li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="copyright">&copy; 2025 The Rustic Whisk. All rights reserved.</div>
+            <div class="social">
+              <a href="#" class="social-link" aria-label="Facebook" title="Facebook">Facebook</a>
+              <a href="#" class="social-link" aria-label="Twitter" title="Twitter">Twitter</a>
+              <a href="#" class="social-link" aria-label="Instagram" title="Instagram">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
